@@ -14,18 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#################################
-# Apex AWS Account Module
-#################################
+// Example but authenticate with AWS however you would like, more information here: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
+provider "aws" {
+  shared_config_files      = [var.aws_config_path]
+  shared_credentials_files = [var.aws_credentials_path]
+}
 
-module "apex_aws_account" {
-  # Here points to the apex-aws-account submodule in the modules folder, this will have to update based on your enviorment.
-  source = "../../modules/apex-aws-account"
-  
-  # Required Inputs
-  aws_account_id = var.aws_account_id
-
-  # Optional Inputs that have a default value if unset
-  aws_policy_name = var.aws_policy_name
-  aws_role_name = var.aws_role_name
+// For production instances the host should be https://apex.apis.dell.com/apex
+provider "apex" {
+  host  = var.apex_host 
 }

@@ -49,4 +49,8 @@ The Terraform Modules for Dell Apex is released and licensed under the MPL-2.0 l
 | v1.0.0-beta             | ubuntu22.04 <br>  rhel9.x | 1.5.x <br> 1.6.x            | 1.21       |
 
 ## List of Submodules in Terraform Modules for Dell Apex
-  * [Apex-Aws-Account](modules/apex-aws-account/README.MD)
+  * [Apex-Aws-Account](examples/apex-aws-account/README.md)
+
+## Generate Documentation
+1. Install [terraform-docs](https://terraform-docs.io/user-guide/installation/) 
+2. Run `make docs`

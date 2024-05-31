@@ -1,0 +1,50 @@
+<!--
+Copyright (c) 2023 Dell Inc., or its subsidiaries. All Rights Reserved.
+
+Licensed under the Mozilla Public License Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://mozilla.org/MPL/2.0/
+
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+No requirements.
+
+## Providers
+
+No providers.
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_apex_aws_account"></a> [apex\_aws\_account](#module\_apex\_aws\_account) | ../../modules/apex-aws-account | n/a |
+
+## Resources
+
+No resources.
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_apex_host"></a> [apex\_host](#input\_apex\_host) | The instance of the Apex Navigator, defaults https://apex.apis.dell.com/apex and does not need to be changed in production environments | `string` | `"https://apex.apis.dell.com/apex"` | no |
+| <a name="input_aws_account_id"></a> [aws\_account\_id](#input\_aws\_account\_id) | The AWS account ID that you would like to connect to APEX | `string` | n/a | yes |
+| <a name="input_aws_config_path"></a> [aws\_config\_path](#input\_aws\_config\_path) | Path to the AWS config file on your local machine check https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html for more information | `string` | n/a | yes |
+| <a name="input_aws_credentials_path"></a> [aws\_credentials\_path](#input\_aws\_credentials\_path) | Path to the AWS credentials file on your local machine check https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html for more information | `string` | n/a | yes |
+| <a name="input_aws_policy_name"></a> [aws\_policy\_name](#input\_aws\_policy\_name) | The name of the policy you would like to connect to APEX, defaults to APEX\_AWS\_POLICY | `string` | `"APEX_AWS_POLICY"` | no |
+| <a name="input_aws_role_name"></a> [aws\_role\_name](#input\_aws\_role\_name) | The name of the role you would like to connect to APEX, defaults to APEX\_AWS\_ROLE | `string` | `"APEX_AWS_ROLE"` | no |
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->

@@ -14,32 +14,49 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-# Apex AWS Account Connection
 
-This module uses the terraform-apex and terraform-aws providers to connect an Apex and AWS account. It does the following steps,
-1. Gets the APEX AWS permissions policy
-2. Uses APEX to generate and AWS trust policy
-3. Creates a policy on AWS with the information gathered in step 1
-4. Creates a role on AWS with the information gathered in step 2
-5. After the Role is created, it will return the Roles `ARN` value which we input to do the final step to make the connection between Apex and the AWS account.
+<!-- BEGIN_TF_DOCS -->
+## Requirements
 
-# Schema
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5 |
+| <a name="requirement_apex"></a> [apex](#requirement\_apex) | >= 1.0.0-beta |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.50.0 |
+| <a name="requirement_time"></a> [time](#requirement\_time) | >= 0.11.1 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_apex"></a> [apex](#provider\_apex) | >= 1.0.0-beta |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.50.0 |
+| <a name="provider_time"></a> [time](#provider\_time) | >= 0.11.1 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [apex_navigator_aws_account.example](https://registry.terraform.io/providers/dell/apex/latest/docs/resources/navigator_aws_account) | resource |
+| [apex_navigator_aws_trust_policy_generate.trust_policy](https://registry.terraform.io/providers/dell/apex/latest/docs/resources/navigator_aws_trust_policy_generate) | resource |
+| [aws_iam_role.test_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.test_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
+| [time_sleep.wait_30_seconds](https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/sleep) | resource |
+| [apex_navigator_aws_permissions.example](https://registry.terraform.io/providers/dell/apex/latest/docs/data-sources/navigator_aws_permissions) | data source |
 
 ## Inputs
-- `aws_config_path` (required) (string) Path to the AWS config file on your local machine check https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html for more information
-- `aws_credentials_path`(required) (string) Path to the AWS credentials file on your local machine check https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html for more information
-- `aws_account_id` (required) (string) The AWS account ID that you would like to connect to APEX
-- `aws_policy_name` (optional) (string) The name of the policy you would like to connect to APEX, defaults to APEX_AWS_POLICY
-- `aws_role_name` (optional) (string) The name of the role you would like to connect to APEX, defaults to APEX_AWS_ROLE
-- `apex_host` (optional) (string) The instance of the Apex Navigator, defaults https://apex.apis.dell.com/apex and does not need to be changed in production environments
 
-## Prerequisites
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_aws_account_id"></a> [aws\_account\_id](#input\_aws\_account\_id) | The AWS account ID that you would like to connect to APEX | `string` | n/a | yes |
+| <a name="input_aws_policy_name"></a> [aws\_policy\_name](#input\_aws\_policy\_name) | The name of the policy you would like to connect to APEX, defaults to APEX\_AWS\_POLICY | `string` | `"APEX_AWS_POLICY"` | no |
+| <a name="input_aws_role_name"></a> [aws\_role\_name](#input\_aws\_role\_name) | The name of the role you would like to connect to APEX, defaults to APEX\_AWS\_ROLE | `string` | `"APEX_AWS_ROLE"` | no |
 
-This module can be used with terraform-apex 1.0.0-beta or greater
+## Outputs
 
-## Usage
-Please refer the [Example](../../examples/apex-aws-account-connection/main.tf). After providing the proper values to all the attributes, then in the workspace run
-```
-terraform init
-terraform apply
-```
+No outputs.
+<!-- END_TF_DOCS -->

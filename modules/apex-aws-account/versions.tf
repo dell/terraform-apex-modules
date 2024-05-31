@@ -14,18 +14,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#################################
-# Apex AWS Account Module
-#################################
-
-module "apex_aws_account" {
-  # Here points to the apex-aws-account submodule in the modules folder, this will have to update based on your enviorment.
-  source = "../../modules/apex-aws-account"
-  
-  # Required Inputs
-  aws_account_id = var.aws_account_id
-
-  # Optional Inputs that have a default value if unset
-  aws_policy_name = var.aws_policy_name
-  aws_role_name = var.aws_role_name
+terraform {
+  required_version = ">= 1.5"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      required_version = ">= 5.50.0"
+      version = ">= 5.50.0"
+    }
+    apex = {
+      source = "dell/apex"
+      required_version = ">= 1.0.0-beta"
+      version = ">= 1.0.0-beta"
+    }
+    time = {
+      source = "hashicorp/time"
+      required_version = ">= 0.11.1"
+      version = ">= 0.11.1"
+    }
+  }
 }
