@@ -19,17 +19,14 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      required_version = ">= 5.50.0"
       version = ">= 5.50.0"
     }
     apex = {
       source = "dell/apex"
-      required_version = ">= 1.0.0-beta"
-      version = ">= 1.0.0-beta"
+      version = ">= 1.0.0-beta2"
     }
     time = {
       source = "hashicorp/time"
-      required_version = ">= 0.11.1"
       version = ">= 0.11.1"
     }
   }
