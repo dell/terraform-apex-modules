@@ -24,20 +24,7 @@ resource "apex_navigator_aws_trust_policy_generate" "trust_policy" {
   account_id = var.aws_account_id
 }
 
-locals {
-  # Version of both the policy and role
-  version = data.apex_navigator_aws_permissions.example.permissions[0].permission_policy.version
-  # Statement of the policy mapped from the apex_navigator_aws_permissions
-  policyMappedStatements = [
-    for k, v in data.apex_navigator_aws_permissions.example.permissions[0].permission_policy.statement : {
-      Sid : v.sid
-      Effect : v.effect
-      Action : v.action
-      Resource : v.resource
-      Condition : length(v.iam_aws_service_name) > 0 ? tomap({ "StringLike" = { "iam:AWSServiceName" :  v.iam_aws_service_name  }}) : {}
-    }
-  ]
-  
+locals {  
 
   # Statement of the assume role policy mapped from the apex_navigator_aws_trust_policy_generate
   assumeRole = [
@@ -59,10 +46,8 @@ resource "aws_iam_role_policy" "test_policy" {
   name = var.aws_policy_name
   role = aws_iam_role.test_role.id
 
-  policy = jsonencode({
-    Version   = local.version
-    Statement = local.policyMappedStatements
-  })
+  // The policy is already json encoded, so we can use directly here
+  policy = data.apex_navigator_aws_permissions.example.permissions[0].permission_policy
 
   depends_on = [data.apex_navigator_aws_permissions.example]
 }
@@ -71,7 +56,7 @@ resource "aws_iam_role_policy" "test_policy" {
 resource "aws_iam_role" "test_role" {
   name = var.aws_role_name
   assume_role_policy = jsonencode({
-    Version   = local.version
+    Version   = resource.apex_navigator_aws_trust_policy_generate.trust_policy.version
     Statement = local.assumeRole
   })
   depends_on = [ apex_navigator_aws_trust_policy_generate.trust_policy ]
