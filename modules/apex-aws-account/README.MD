@@ -29,7 +29,7 @@ limitations under the License.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_apex"></a> [apex](#provider\_apex) | >= 1.0.0-beta |
+| <a name="provider_apex"></a> [apex](#provider\_apex) | >= 1.0.0-beta.2 |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.50.0 |
 | <a name="provider_time"></a> [time](#provider\_time) | >= 0.11.1 |
 

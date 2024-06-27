@@ -23,7 +23,7 @@ terraform {
     }
     apex = {
       source = "dell/apex"
-      version = ">= 1.0.0-beta2"
+      version = ">= 1.0.0-beta.2"
     }
     time = {
       source = "hashicorp/time"
