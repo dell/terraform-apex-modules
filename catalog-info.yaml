@@ -10,13 +10,13 @@ metadata:
     - terraform
     - dell
     - infrastructure-as-code
-    - terraform-provider
+    - terraform-modules
     - apex
   annotations:
     backstage.io/techdocs-ref: dir:.
     github.com/project-slug: dell/terraform-apex-modules
   links:   
-    - url: 'https://dell.github.io/terraform-docs/docs/storage/platforms/apex/'
+    - url: 'https://dell.github.io/terraform-docs/modules/storage/platforms/apex/'
       title: 'Dell Terraform Modules Documentation'
       icon: 'web'
     - url: 'https://github.com/dell/terraform-apex-modules/issues'
